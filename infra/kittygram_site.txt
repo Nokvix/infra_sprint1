@@ -1,0 +1,3 @@
+IP: 158.160.65.143;
+name_taski: taski.ddns.net;
+name_kittygram: kittydev.ddns.net;
