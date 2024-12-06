@@ -1,42 +1,28 @@
 server {
 
-    # listen 80;
-    server_name 158.160.65.143 taski.ddns.net;
-
-    location /api/ {
+    listen 80;
+    server_name 172.30.49.186;
+   
+     location /api/ {
         proxy_pass http://127.0.0.1:8000;
     }
 
     location /admin/ {
         proxy_pass http://127.0.0.1:8000;
     }
-
+    
     location / {
         root   /var/www/taski;
         index  index.html index.htm;
         try_files $uri /index.html;
     }
 
-}
+} 
 
 server {
-    if ($host = taski.ddns.net) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
 
     listen 80;
-    server_name 158.160.65.143 taski.ddns.net;
-    return 404; # managed by Certbot
-
-
-}
-
-server {
-
-    # listen 80;
-    server_name 158.160.65.143 kittydev.ddns.net;
+    server_name kittydev.ddns.net;
 
     location /api/ {
         proxy_pass http://127.0.0.1:8080;
@@ -57,19 +43,5 @@ server {
         index  index.html index.htm;
         try_files $uri /index.html;
     }
-
-}
-
-server {
-    if ($host = kittydev.ddns.net) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-
-    listen 80;
-    server_name 158.160.65.143 kittydev.ddns.net;
-    return 404; # managed by Certbot
-
 
 }
